@@ -1,0 +1,26 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaApplicationStudents.Views.StudentsWindow"
+        Title="StudentsWindow">
+	<StackPanel>
+		<Button Content="Load Students" Command="{Binding LoadStudentsAsync}" />
+		<ListBox Items="{Binding Students}" SelectedItem="{Binding SelectedStudent}" SelectionMode="Single">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel>
+						<TextBlock Text="{Binding Id}"/>
+						<TextBlock Text="{Binding Name}"/>
+						<TextBlock Text="{Binding YearOfStudy}"/>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+		<TextBlock Text="{Binding SelectedStudent.Name}"/>
+		<TextBox Text="{Binding NewStudent.Name}"/>
+		<NumericUpDown Text="{Binding NewStudent.YearOfStudy}" Minimum="1" Maximum="5"/>
+		<Button Content="Add New Student" Command="{Binding AddNewStudentAsync}"/>
+	</StackPanel>
+</Window>
